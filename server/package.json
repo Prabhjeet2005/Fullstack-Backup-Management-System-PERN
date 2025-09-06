@@ -7,7 +7,7 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "@okta/jwt-verifier": "^4.0.2",
