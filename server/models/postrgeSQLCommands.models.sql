@@ -1,18 +1,19 @@
+
 CREATE TABLE IF NOT EXISTS roles(
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) UNIQUE NOT NULL
+  role_name VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS users(
   id SERIAL PRIMARY KEY,
-  okta_user_id VARCHAR(255) UNIQUE NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
-  display_name VARCHAR(255) NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
   role_id INTEGER NOT NULL REFERENCES roles(id),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO roles(name) VALUES ('Admin');
-INSERT INTO roles(name) VALUES ('Auditor');
+INSERT INTO roles(role_name) VALUES ('Admin');
+INSERT INTO  roles(role_name) VALUES ('Auditor');
 
-CREATE INDEX idx_users_okta_user_id ON users(okta_user_id);
+CREATE INDEX idx_id ON users(id);
