@@ -31,6 +31,16 @@ const signupController = async (req, res, next) => {
 			errorCreator("Error Creating New User", 400);
 		}
 
+		const userRole = newUser.rows[0].role_name;
+		const token = signToken({ email, userRole });
+		if (!token) {
+			errorCreator("Error Creating Token", 400);
+		}
+		res.cookie("authToken", token, {
+			maxAge: 24 * 60 * 60 * 1000,
+			httpOnly: true,
+		});
+
 		res
 			.status(201)
 			.send(responseCreator("User Registered Successfully!", newUser.rows[0]));

@@ -1,38 +1,124 @@
-.App {
-  text-align: center;
+body {
+	overflow-x: hidden;
+}
+.img-size {
+	height: 3rem;
+	cursor: pointer;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.key-element {
+	background-color: #008080;
+	color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ui-container {
+	color: #6c757d;
+}
+.inactive-elements {
+	color: #ced4da;
+}
+.background {
+	background-color: #eff2f5;
+}
+.alert-success {
+	color: rgb(35, 167, 35);
+}
+.alert-warning {
+	color: #ffc107;
+}
+.alert-error {
+	color: red;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.relative {
+	position: relative;
+}
+.absolute {
+	position: absolute;
+}
+button {
+	cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.auth-container {
+	margin-top: 6em;
+	border: 1px solid dimgray;
+	border-radius: 8px;
+	padding: 1em;
+	gap: 2em;
+	.auth-text {
+		max-width: fit-content;
+	}
+	.auth-heading {
+		font-size: xx-large;
+		font-weight: 400;
+	}
+	.auth-field-container {
+		display: flex !important;
+		justify-content: space-between !important;
+	}
+	input {
+		position: relative;
+		padding-right: 2em;
+	}
+	.img-auth {
+		top: 0;
+		right: 0.5em;
+		height: 1em;
+		cursor: pointer;
+	}
+	.redirect {
+		text-decoration: underline;
+		font-size: small;
+		margin-top: -1em;
+		cursor: pointer;
+	}
+}
+.auth-btn:hover {
+	background-color: #008080;
+	outline: none;
+	border: none;
+	transform: scale(1.02);
+}
+.auth-btn {
+	transition: transform 0.2s ease;
+	background-color: white;
+	color: #008080;
+	border: 1px solid #008080;
+}
+.auth-btn:disabled {
+	cursor: not-allowed;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+	outline: none;
+	padding: 2px 4px;
+	width: 80%;
+}
+
+.password-constraints {
+	.password-constraints-fields {
+		font-size: x-small;
+		font-weight: 400;
+		/* color: red; */
+		min-width: -webkit-fill-available;
+	}
+}
+
+.loader {
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+	z-index: 1000;
+	color: #008080;
+	scale: 2.5;
+	font-size: xx-small;
+}
+.img-loader-btn {
+	height: 1.4em;
+}
+.btn-loading:disabled {
+	cursor: "not-allowed";
+	background-color: inherit;
+	border: 1px solid #008080;
 }
