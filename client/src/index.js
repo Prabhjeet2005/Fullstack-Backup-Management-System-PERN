@@ -1,27 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
+import 'react-toastify/dist/ReactToastify.css';
 import App from "./App";
-import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { allRoutes } from "./utils/allRoutes";
+import "./index.css";
+import { UserContextProvider } from "./context/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const routes =
-	createBrowserRouter[
+	createBrowserRouter([
 		{
 			path: "/",
 			element: <App />,
 			children: allRoutes,
 		}
-	];
+	]);
 root.render(
-	<React.StrictMode>
-		<RouterProvider router={routes}>
-			<App />
-		</RouterProvider>
-	</React.StrictMode>
+	<UserContextProvider>
+		<React.StrictMode>
+			<RouterProvider router={routes}>
+				<App />
+			</RouterProvider>
+		</React.StrictMode>
+	</UserContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
