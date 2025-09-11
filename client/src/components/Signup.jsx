@@ -6,13 +6,11 @@ import { UserContext } from "../context/UserContext";
 import Loader from "./Loader";
 import { api, ENDPOINTS } from "../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Signup = () => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
-	const [{ name, email, password }, authDispatch] = useReducer(
-		authReducer,
-		initialState
-	);
+	const { name, email, password, role_name, authDispatch } = useContext(AuthContext);
 	const { isLoading, isLoggedIn, userDispatch } = useContext(UserContext);
 	const location = useLocation();
 	// Location: {pathname: '/signup', search: '', hash: '', state: {…}, key: '06r14hc2'}

@@ -9,9 +9,9 @@ const initialState = {
 export const UserContext = createContext(initialState);
 
 export const UserContextProvider = ({children})=>{
-  const [{isLoggedIn,isLoading}, userDispatch] = useReducer(userReducer,initialState);
+  const [{isLoggedIn,isLoading,role_name}, userDispatch] = useReducer(userReducer,initialState);
   return(
-    <UserContext.Provider value={{isLoading,isLoggedIn,userDispatch}} >
+    <UserContext.Provider value={{isLoading,isLoggedIn,role_name,userDispatch}} >
       {children}
     </UserContext.Provider>
   )

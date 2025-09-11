@@ -31,8 +31,32 @@
 .logo-text {
 	font-size: x-large;
 	font-weight: 600;
-  cursor: pointer;
+	cursor: pointer;
+	color: #ffea00 !important;
 }
-.profile-container{
-  max-width: fit-content;
+.profile-container {
+	max-width: fit-content;
+}
+
+.animation-container {
+	perspective: 1000px;
+}
+
+/* 2. Define the animation steps. */
+@keyframes flip-horizontal {
+	from {
+		transform: rotateY(0deg);
+	}
+	to {
+		transform: rotateY(180deg);
+	}
+}
+
+/* 3. Apply the animation to your image. */
+.coin-flip-effect {
+	/* These are the essential properties for the animation */
+	animation-name: flip-horizontal;
+	animation-duration: 0.6s;
+	animation-iteration-count: 2;
+	animation-timing-function: ease-in;
 }

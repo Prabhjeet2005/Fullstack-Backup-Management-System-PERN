@@ -1,4 +1,3 @@
-import { useReducer } from "react";
 import {
 	emailRegex,
 	lowercaseRegex,
@@ -8,28 +7,12 @@ import {
 	uppercaseRegex,
 } from "../utils/regex";
 
-export const initialState = {
-	name: { value: "", isValid: false },
-	email: { value: "", isValid: false },
-	password: {
-		value: "",
-		isValid: false,
-		individualValidation: {
-			hasUpper: false,
-			hasLower: false,
-			hasNumber: false,
-			hasSpecial: false,
-			hasMinLength: false,
-		},
-	},
-};
-
 export const authReducer = (state, { type, payload }) => {
 	switch (type) {
 		case "PASSWORD_CHANGE":
-			return {...state,password:{value:payload}};
+			return { ...state, password: { value: payload } };
 		case "EMAIL_CHANGE":
-			return {...state,email:{value:payload}};
+			return { ...state, email: { value: payload } };
 		case "NAME_VALIDATION":
 			return {
 				...state,
@@ -60,6 +43,8 @@ export const authReducer = (state, { type, payload }) => {
 					},
 				},
 			};
+		case "ROLE":
+			return { ...state, role_name: payload };
 		default:
 			return state;
 	}

@@ -49,14 +49,10 @@ const NavBar = () => {
 	return (
 		<Container fluid className="key-element p-2  ">
 			<Row className="d-flex justify-content-between align-items-center">
-				<Col onClick={(e) => navigate("/")} className="logo-text">
+				<Col onClick={(e) => navigate("/")} className="logo-text text-warning">
 					<span>
 						InstaBackUp
-						<img
-							src="./images/connect-data-link-svgrepo-com.svg"
-							className="img-size"
-							alt="logo"
-						/>{" "}
+						<img src="./images/logo.svg" className="img-size" alt="logo" />{" "}
 					</span>
 				</Col>
 				<Col className="d-flex profile-container flex-row-reverse relative">
@@ -64,7 +60,7 @@ const NavBar = () => {
 						onClick={(e) => setIsProfileOpen(!isProfileOpen)}
 						src="/images/profile-circle-svgrepo-com.svg"
 						alt="Login/Logout"
-						className="img-size"
+						className="img-size flip-horizontal coin-flip-effect"
 					/>
 					{isProfileOpen ? (
 						<>

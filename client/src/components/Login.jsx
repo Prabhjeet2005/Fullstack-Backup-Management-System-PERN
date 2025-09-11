@@ -6,14 +6,13 @@ import { UserContext } from "../context/UserContext";
 import Loader from "./Loader";
 import { api, ENDPOINTS } from "../services/api";
 import { Navigate, replace, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
-	const [{ email, password }, authDispatch] = useReducer(
-		authReducer,
-		initialState
-	);
-	const { isLoading, isLoggedIn, userDispatch } = useContext(UserContext);
+	const { email, password,role_name , authDispatch} = useContext(AuthContext);
+	const { isLoading, isLoggedIn, userDispatch } =
+		useContext(UserContext);
 	const location = useLocation();
 	// Location: {pathname: '/signup', search: '', hash: '', state: {…}, key: '06r14hc2'}
 	const redirectPage = location?.state?.from?.pathname || "/";
@@ -51,6 +50,10 @@ const Login = () => {
 				}
 			);
 			if (loginRequest) {
+				authDispatch({
+					type: "ROLE",
+					payload: loginRequest?.data?.data?.role_name,
+				});
 				userDispatch({
 					type: "LOGGEDIN",
 				});
@@ -117,7 +120,7 @@ const Login = () => {
 										<span className="relative">
 											{" "}
 											<input
-                      required
+												required
 												onChange={handlePasswordChange}
 												type={passwordVisible ? `text` : `password`}
 												placeholder="Enter Password"
