@@ -100,9 +100,10 @@ const loginWithTokenController = async (req, res, next) => {
 		if (!user) {
 			errorCreator("Error Finding User", 400);
 		}
+		const {password_hashed,...sanitizedData} = user.rows[0]
 		res
 			.status(200)
-			.send(responseCreator("Logged In successfully With Token", user.rows[0]));
+			.send(responseCreator("Logged In successfully With Token", sanitizedData));
 	} catch (error) {
 		next(error);
 	}
