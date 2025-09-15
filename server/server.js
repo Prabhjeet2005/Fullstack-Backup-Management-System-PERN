@@ -7,6 +7,7 @@ const apiHealth = require("./routes/apiHealth.route")
 
 
 const authRouter = require("./routes/auth.route")
+const backupRouter = require("./routes/backup.route")
 
 const app = express()
 app.use(express.json())
@@ -19,6 +20,7 @@ app.use(cors({
 
 app.use("/api/check-api-health",apiHealth);
 app.use("/api/auth",authRouter)
+app.use("/api/backups",backupRouter)
 
 app.use(errorHandler)
 
