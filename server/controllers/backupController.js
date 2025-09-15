@@ -137,4 +137,18 @@ const downloadBackup = async (req, res, next) => {
 	}
 };
 
-module.exports = { createBackup, getAllBackups, downloadBackup };
+const deletingBackup = async (req, res, next) => {
+	const { id } = req.params;
+	const updatedBackup = await pool.query(
+		`DELETE FROM backups WHERE id = $1 RETURNING *;`,
+		[id]
+	);
+	if (!updatedBackup) {
+		errorCreator(`Error Deleting Backup`);
+	}
+	res
+		.status(200)
+		.send(responseCreator(`Backup Successfully Deleted`, updatedBackup.rows));
+};
+
+module.exports = { createBackup, getAllBackups, downloadBackup, deletingBackup };
