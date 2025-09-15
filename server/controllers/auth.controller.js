@@ -87,7 +87,7 @@ const loginWithTokenController = async (req, res, next) => {
 	try {
 		const { authToken } = req.cookies;
 		if (!authToken) {
-			errorCreator("Token Missing", 404);
+			errorCreator("User Is Logged Out", 404);
 		}
 		const data = verifyToken(authToken);
 		if (!data) {

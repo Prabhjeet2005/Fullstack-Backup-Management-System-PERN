@@ -10,17 +10,20 @@ import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
-	const { email, password,role_name , authDispatch} = useContext(AuthContext);
-	const { isLoading, isLoggedIn, userDispatch } =
-		useContext(UserContext);
+	const { email, password, role_name, authDispatch } = useContext(AuthContext);
+	const { isLoading, isLoggedIn, userDispatch } = useContext(UserContext);
 	const location = useLocation();
 	// Location: {pathname: '/signup', search: '', hash: '', state: {…}, key: '06r14hc2'}
 	const redirectPage = location?.state?.from?.pathname || "/";
 	const navigate = useNavigate();
 
-	if (isLoggedIn) {
-		return <Navigate to={redirectPage} replace />;
-	}
+	useEffect(() => {
+		if (isLoggedIn) {
+			navigate(redirectPage, { replace: true });
+		}
+	}, [isLoggedIn]);
+	console.log("🚀 ~ Login ~ redirectPage:", redirectPage);
+	console.log("🚀 ~ Login ~ isLoggedIn:", isLoggedIn);
 
 	const handleEmailChange = (e) => {
 		authDispatch({
@@ -73,7 +76,7 @@ const Login = () => {
 	};
 	return (
 		<>
-			{isLoading && <Loader isLoading={isLoading} />}
+			{isLoading && <Loader className isLoading={isLoading} />}
 			<Container fluid>
 				<Row>
 					<Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>

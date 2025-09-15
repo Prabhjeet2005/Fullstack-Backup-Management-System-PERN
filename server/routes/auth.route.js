@@ -8,7 +8,7 @@ const authRouter = express.Router();
 
 authRouter.post("/signup",signupController);
 authRouter.post("/login", loginController);
-authRouter.post("/login-with-token",authMiddleware, loginWithTokenController);
+authRouter.post("/login-with-token", loginWithTokenController);
 authRouter.get("/logout", logoutController);
 
 module.exports = authRouter;

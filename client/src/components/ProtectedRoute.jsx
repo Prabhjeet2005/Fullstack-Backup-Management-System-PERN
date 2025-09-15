@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 import { Navigate, useLocation } from "react-router-dom";
 import Loader from "./Loader";
@@ -13,6 +13,7 @@ const ProtectedRoute = ({ children }) => {
 	if (!isLoggedIn) {
 		return <Navigate to={"/login"} state={{ from: location }} replace />; 
 	}
+
 	return children; // Actual  JSX stored in children, but {children} send multiple data bundled together
 };
 
