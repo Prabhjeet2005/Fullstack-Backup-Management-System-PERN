@@ -22,8 +22,6 @@ const Login = () => {
 			navigate(redirectPage, { replace: true });
 		}
 	}, [isLoggedIn]);
-	console.log("🚀 ~ Login ~ redirectPage:", redirectPage);
-	console.log("🚀 ~ Login ~ isLoggedIn:", isLoggedIn);
 
 	const handleEmailChange = (e) => {
 		authDispatch({
@@ -76,7 +74,6 @@ const Login = () => {
 	};
 	return (
 		<>
-			{isLoading && <Loader className isLoading={isLoading} />}
 			<Container fluid>
 				<Row>
 					<Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
@@ -157,7 +154,7 @@ const Login = () => {
 								)}
 							</Button>
 							<Col
-								onClick={() => navigate("/signup")}
+								onClick={() => navigate("/signup",{replace:true})}
 								style={{ color: `#008080` }}
 								className="text-center redirect ">
 								Not A User? Signup Now

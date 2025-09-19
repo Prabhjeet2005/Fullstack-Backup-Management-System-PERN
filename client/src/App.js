@@ -6,6 +6,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "./context/UserContext";
 import { api, ENDPOINTS } from "./services/api";
 import { AuthContext } from "./context/AuthContext";
+import Loader from "./components/Loader";
 
 function App() {
 	const { isLoggedIn, isLoading, userDispatch } = useContext(UserContext);
@@ -42,16 +43,9 @@ function App() {
 							type: "LOGGEDIN",
 						});
 					} 
-					// else {
-					// 	navigate("/login", { state: { from: location } });
-					// }
+
 				} catch (error) {
-					userDispatch({
-						type: "LOGGEDOUT",
-					});
-					userDispatch({
-						type: "LOADING_FALSE",
-					});
+					console.error(error);
 				} finally {
 					userDispatch({
 						type: "LOADING_FALSE",
@@ -60,14 +54,11 @@ function App() {
 			}
 		})();
 	}, []);
-	console.log("🚀 ~ App ~ name:", name);
-	console.log("🚀 ~ App ~ role_name:", role_name);
-	console.log("🚀 ~ App ~ email:", email);
-	console.log("🚀 ~ App ~ isLoggedIn:", isLoggedIn);
 
 	return (
 		<>
 			<NavBar />
+			<Loader isLoading={isLoading} />
 			<ToastContainer
 				position="top-center"
 				autoClose={2000}
