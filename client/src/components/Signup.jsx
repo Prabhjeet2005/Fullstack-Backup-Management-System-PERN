@@ -10,7 +10,8 @@ import { AuthContext } from "../context/AuthContext";
 
 const Signup = () => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
-	const { name, email, password, role_name, authDispatch } = useContext(AuthContext);
+	const { name, email, password, role_name, authDispatch } =
+		useContext(AuthContext);
 	const { isLoading, isLoggedIn, userDispatch } = useContext(UserContext);
 	const location = useLocation();
 	// Location: {pathname: '/signup', search: '', hash: '', state: {…}, key: '06r14hc2'}
@@ -70,9 +71,15 @@ const Signup = () => {
 			});
 		}
 	};
+
+	useEffect(() => {
+		if(isLoggedIn){
+			navigate("/");
+		}
+	}, [isLoggedIn])
+	
 	return (
 		<>
-			{isLoading && <Loader isLoading={isLoading} />}
 			<Container fluid>
 				<Row>
 					<Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
@@ -201,7 +208,7 @@ const Signup = () => {
 													Password must be 8 characters Long
 												</Col>
 											)}
-										{!password?.individualValidation.hasUpper && (
+										{!password?.individualValidation?.hasUpper && (
 											<Col
 												xs={{ span: 3, offset: 3 }}
 												// sm={{ span: 9 }}
@@ -251,7 +258,7 @@ const Signup = () => {
 								)}
 							</Button>
 							<Col
-								onClick={() => navigate("/login")}
+								onClick={() => navigate("/login", { replace: true })}
 								style={{ color: `#008080` }}
 								className="text-center redirect ">
 								Already A User? Login Now
