@@ -16,7 +16,6 @@ backupRouter.get("/", authMiddleware, getAllBackups);
 backupRouter.get(
 	"/:id/download",
 	authMiddleware,
-	adminMiddleware,
 	downloadBackup
 );
 backupRouter.delete(
