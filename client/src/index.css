@@ -1,16 +1,42 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 
+html {
+	scrollbar-color: #008080 #a1e0e000;
+	scrollbar-width: auto; /* or 'thin' */
+}
+html::-webkit-scrollbar-thumb:hover {
+	background: #008080;
+}
+/* --- WebKit scrollbar styling for Chrome, Safari, etc. --- */
+html::-webkit-scrollbar {
+	height: 6px;
+}
+html::-webkit-scrollbar-thumb:hover {
+	background: #00808000;
+}
 
+body {
+	overflow-x: hidden;
+}
 
+body {
+	scrollbar-color: #00aaaa #008080;
+	scrollbar-width: thin;
+	background-color: #a1e0e0a0;
+
+}
+body::-webkit-scrollbar {
+	height: 12px;
+}

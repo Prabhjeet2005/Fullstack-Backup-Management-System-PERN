@@ -5,6 +5,9 @@ const { errorCreator } = require("../utils/responseCreator");
 const authMiddleware = async(req,res,next)=>{
   try {
     const {authToken} = req.cookies;
+    if(!authToken){
+      errorCreator(`User Is Logged Out`,400)
+    }
     const data = verifyToken(authToken);
     if(!data){
       errorCreator("Invalid Token",403);

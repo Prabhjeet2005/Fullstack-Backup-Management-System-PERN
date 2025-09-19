@@ -124,6 +124,7 @@ const downloadBackup = async (req, res, next) => {
 			`attachment; filename="${originalFileName}"`
 		);
 		res.setHeader("Content-Type", "application/octet-stream");
+		res.status(200)
 
 		await streamPipeline(readStream, decipher, gunzip, res);
 	} catch (error) {
