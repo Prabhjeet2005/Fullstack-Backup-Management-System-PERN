@@ -14,10 +14,11 @@ const NavBar = () => {
 	const redirectPage = location?.state?.from?.pathname || "/";
 
 	const handleLoginClick = (e) => {
-		<Navigate to={"/login"} state={{ from: location }} replace />;
+		navigate("/login",{state:{from:location}})
 	};
 	const handleSignupClick = (e) => {
-		<Navigate to={"/signup"} state={{ from: location }} replace />;
+		navigate("/signup", { state: { from: location } });
+
 	};
 	const handleLogoutClick = async (e) => {
 		try {
@@ -52,7 +53,7 @@ const NavBar = () => {
 				<Col onClick={(e) => navigate("/")} className="logo-text text-warning">
 					<span>
 						InstaBackUp
-						<img src="./images/logo.svg" className="img-size" alt="logo" />{" "}
+						<img src="./images/logo.svg" className="img-size-no-scale" alt="logo" />{" "}
 					</span>
 				</Col>
 				<Col className="d-flex profile-container flex-row-reverse relative">
