@@ -12,4 +12,10 @@ export const ENDPOINTS = {
 		LOGINTOKEN: "api/auth/login-with-token",
 		LOGOUT: "api/auth/logout",
 	},
+	BACKUP: {
+		CREATE: "api/backups",
+		FETCH: "api/backups",
+		DELETE: "/api/backups/:id/delete",
+		DOWNLOAD: "/api/backups/:id/download"
+	},
 };
