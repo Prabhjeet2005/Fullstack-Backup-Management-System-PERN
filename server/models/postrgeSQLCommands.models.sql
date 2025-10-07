@@ -27,3 +27,15 @@ CREATE TABLE IF NOT EXISTS backups (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+-- This table will store the cron schedules for automated backups.
+CREATE TABLE IF NOT EXISTS schedules (
+    id SERIAL PRIMARY KEY,
+    job_name VARCHAR(255) NOT NULL,
+    -- cron_string stores the scheduling pattern (e.g., '0 2 * * *' for 2 AM daily).
+    cron_string VARCHAR(255) NOT NULL,
+    -- Foreign key to link the schedule to the user who created it.
+    created_by_user_id INTEGER NOT NULL REFERENCES users(id),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    -- Ensure a user can't create two schedules with the exact same pattern.
+    UNIQUE(created_by_user_id, cron_string)
+);

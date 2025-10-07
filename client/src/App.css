@@ -1,220 +1,272 @@
 .img-size {
-	height: 3rem;
-	cursor: pointer;
-	transition: transform 0.3s ease;
+  height: 3rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 .img-size-no-scale {
-	height: 3rem;
-	cursor: pointer;
+  height: 3rem;
+  cursor: pointer;
 }
 .img-size:hover {
-	transform: scale(1.1);
+  transform: scale(1.1);
 }
-.scale-on-hover{
-	transform: transition 0.5s ease;
-	cursor: pointer;
+.scale-on-hover {
+  transform: transition 0.5s ease;
+  cursor: pointer;
 }
-.scale-on-hover:hover{
-	transform: scale(1.05);
+.scale-on-hover:hover {
+  transform: scale(1.05);
 }
 
 .key-element {
-	background-color: #008080;
-	color: white;
+  background-color: #008080;
+  color: white;
 }
 
 .ui-container {
-	color: #6c757d;
+  color: #6c757d;
 }
 .inactive-elements {
-	color: #ced4da;
+  color: #ced4da;
 }
 .background {
-	background-color: #eff2f5;
+  background-color: #eff2f5;
 }
 .alert-success {
-	color: #00ff00;
+  color: #00ff00;
 }
 .alert-warning {
-	color: #ffc107;
+  color: #ffc107;
 }
 .alert-error {
-	color: #ff0000;
+  color: #ff0000;
 }
 
 .relative {
-	position: relative;
+  position: relative;
 }
 .absolute {
-	position: absolute;
+  position: absolute;
 }
 button {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .auth-container {
-	margin-top: 6em;
-	border: 1px solid dimgray;
-	border-radius: 8px;
-	padding: 1em;
-	gap: 2em;
-	.auth-text {
-		max-width: fit-content;
-	}
-	.auth-heading {
-		font-size: xx-large;
-		font-weight: 400;
-	}
-	.auth-field-container {
-		display: flex !important;
-		justify-content: space-between !important;
-	}
-	input {
-		position: relative;
-		padding-right: 2em;
-	}
-	.img-auth {
-		top: 0;
-		right: 0.5em;
-		height: 1em;
-		cursor: pointer;
-	}
-	.redirect {
-		text-decoration: underline;
-		font-size: small;
-		margin-top: -1em;
-		cursor: pointer;
-	}
+  margin-top: 6em;
+  border: 1px solid dimgray;
+  border-radius: 8px;
+  padding: 1em;
+  gap: 2em;
+  .auth-text {
+    max-width: fit-content;
+  }
+  .auth-heading {
+    font-size: xx-large;
+    font-weight: 400;
+  }
+  .auth-field-container {
+    display: flex !important;
+    justify-content: space-between !important;
+		align-items: center;
+  }
+  input {
+    position: relative;
+    padding-right: 2em;
+  }
+  .img-auth {
+    top: 0;
+    right: 0.5em;
+    height: 1em;
+    cursor: pointer;
+  }
+  .redirect {
+    text-decoration: underline;
+    font-size: small;
+    margin-top: -1em;
+    cursor: pointer;
+  }
 }
 .auth-btn:hover {
-	background-color: #008080;
-	outline: none;
-	border: none;
-	transform: scale(1.02);
+  background-color: #008080;
+  outline: none;
+  border: none;
+  transform: scale(1.01);
 }
 .auth-btn {
-	transition: transform 0.2s ease;
-	background-color: white;
-	color: #008080;
-	border: 1px solid #008080;
+  transition: transform 0.2s ease;
+  background-color: #008080;
+	font-size: larger;
+  color: white;
+	
+  border: 0.1em solid #008080;
 }
 .auth-btn:disabled {
-	cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 input {
-	outline: none;
-	padding: 2px 4px;
-	width: 80%;
+  outline: none;
+  padding: 2px 4px;
+  width: 80%;
 }
 
 .password-constraints {
-	.password-constraints-fields {
-		font-size: x-small;
-		font-weight: 400;
-		/* color: red; */
-		min-width: -webkit-fill-available;
-	}
+  .password-constraints-fields {
+    font-size: x-small;
+    font-weight: 400;
+    /* color: red; */
+    min-width: -webkit-fill-available;
+  }
 }
 
 .loader {
-	backdrop-filter: blur(0.4px);
-	font-size: small;
-	position: absolute;
-	top: 50vh;
-	left: 50vw;
-	z-index: 1000;
-	color: #008080;
-	scale: 2.5;
-	font-size: xx-small;
+  backdrop-filter: blur(0.3px);
+  font-size: medium;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  z-index: 1000;
+  color: black;
+  scale: 2.5;
 }
 .img-loader-btn {
-	height: 1.4em;
+  height: 1.4em;
 }
 .btn-loading:disabled {
-	cursor: "not-allowed";
-	background-color: inherit;
-	border: 1px solid #008080;
+  cursor: "not-allowed";
+  background-color: inherit;
+  border: 1px solid #008080;
 }
 
 .table-structure {
-	z-index: 2;
-	overflow-x: scroll;
-	.no-info{
-		cursor: default;
-	}
+  z-index: 2;
+  overflow-x: scroll;
+  .no-info {
+    cursor: default;
+  }
 
-	/* --- Standard scrollbar styling for Firefox --- */
-	/* thumb color | track color          */
-	scrollbar-color: #008080 #a1e0e000;
-	scrollbar-width: thin; /* or 'thin' */
+  /* --- Standard scrollbar styling for Firefox --- */
+  /* thumb color | track color          */
+  scrollbar-color: #008080#a1e0e000;
+  scrollbar-width: thin; /* or 'thin' */
 }
 
 .table-structure::-webkit-scrollbar-thumb:hover {
-	background: #008080;
+  background: #008080;
 }
 /* --- WebKit scrollbar styling for Chrome, Safari, etc. --- */
 .table-structure::-webkit-scrollbar {
-	height: 12px;
+  height: 12px;
 }
 .table-structure::-webkit-scrollbar-thumb:hover {
-	background: #008080;
+  background: #008080;
 }
 
 .table-structure table {
-	width: 100%;
-	border-collapse: separate;
-	border-spacing: 0;
-	border: 4px solid #2e9393;
-	border-radius: 1em;
-	overflow: hidden; /* This is the key fix */
-	font-family: sans-serif;
-	text-align: left;
-	color: white;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 4px solid #2e9393;
+  border-radius: 1em;
+  overflow: hidden; /* This is the key fix */
+  font-family: sans-serif;
+  text-align: left;
+  color: white;
 }
 
 .table-structure th,
 .table-structure td {
-	padding: 12px 15px;
-	border: none;
-	text-align: center;
+  padding: 12px 15px;
+  border: none;
+  text-align: center;
 }
 
 /* Style the header */
 .table-structure thead {
-	background-color: #005555;
-	color: white;
+  background-color: #005555;
+  color: white;
 }
 
 /* Style the body rows */
 .table-structure tbody tr {
-	border-bottom: 2px solid #ddd;
-	background-color: #007979;
+  border-bottom: 2px solid #ddd;
+  background-color: #007979;
 }
 
 /* Fixed color for readability */
 .table-structure tbody tr:nth-of-type(even) {
-	background-color: #007979;
+  background-color: #007979;
 }
 
 .table-structure tbody tr:last-of-type {
-	border-bottom: none;
+  border-bottom: none;
 }
 
 .dashboard-bg {
-	height: 100%;
-	scrollbar-color: #008080;
-	scrollbar-width: auto;
+  height: 100%;
+  scrollbar-color: #008080;
+  scrollbar-width: auto;
 }
 .dashboard-bg::-webkit-scrollbar {
-	height: 16px;
+  height: 16px;
 }
 .dashboard-bg::-webkit-scrollbar-thumb:hover {
-	background: #008080;
+  background: #008080;
 }
 
 .heading-dash {
-	font-size: xx-large;
-	font-weight: 700;
-	color: #008080;
+  font-size: xx-large;
+  font-weight: 700;
+  color: #008080;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.options-border {
+  border: 2px solid #2e9393;
+  border-radius: 2em !important;
+  color: #008080;
+}
+
+.options-selected {
+  color: white;
+  background-color: #008080;
+  border-radius: 2em !important;
+}
+
+.schedule-heading {
+  font-weight: 600;
+  font-size: x-large;
+}
+
+.schedule-btn {
+  border-radius: 4px;
+  border: 2px solid #008080;
+  background-color: #008080 !important;
+  color: white !important;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+	font-size: larger;
+	font-weight: 600;
+}
+
+.schedule-btn:hover {
+  transform: scale(1.05);
+}
+
+.schedules-select {
+  border-radius: 8px !important;
+  border: 1px solid #008080;
+  width: 80%;
+	outline: none;
+	cursor: pointer;
+	max-width: 50em;
+	background-color: transparent !important;
+}
+
+.options-value{
+	background-color: #2e9393;
 }

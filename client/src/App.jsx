@@ -56,26 +56,27 @@ function App() {
 	}, []);
 
 	return (
-		<>
-			<NavBar />
-			<Loader isLoading={isLoading} />
-			<ToastContainer
-				position="top-center"
-				autoClose={2000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				limit={3}
-				pauseOnFocusLoss={false}
-				draggable
-				pauseOnHover
-				theme="colored"
-				transition={Bounce}
-			/>
-			<Outlet />
-		</>
-	);
+    <>
+        <NavBar />
+				<section className="mt-5"></section>
+          <Loader isLoading={isLoading} />
+          <ToastContainer
+            position="bottom-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            limit={3}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover
+            theme="colored"
+            transition={Bounce}
+          />
+          <Outlet />
+    </>
+  );
 }
 
 export default App;
