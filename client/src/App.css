@@ -98,6 +98,7 @@ button {
   background-color: #008080;
 	font-size: larger;
   color: white;
+	
   border: 0.1em solid #008080;
 }
 .auth-btn:disabled {
