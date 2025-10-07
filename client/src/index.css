@@ -13,7 +13,7 @@ code {
 }
 
 html {
-	scrollbar-color: #008080 #a1e0e000;
+	scrollbar-color: #008080 transparent;
 	scrollbar-width: auto; /* or 'thin' */
 }
 html::-webkit-scrollbar-thumb:hover {

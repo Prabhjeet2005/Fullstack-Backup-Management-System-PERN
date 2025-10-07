@@ -6,16 +6,20 @@ export const api = axios.create({
 });
 
 export const ENDPOINTS = {
-	USER: {
-		SIGNUP: "api/auth/signup",
-		LOGIN: "api/auth/login",
-		LOGINTOKEN: "api/auth/login-with-token",
-		LOGOUT: "api/auth/logout",
-	},
-	BACKUP: {
-		CREATE: "api/backups",
-		FETCH: "api/backups",
-		DELETE: "/api/backups/:id/delete",
-		DOWNLOAD: "/api/backups/:id/download"
-	},
+  USER: {
+    SIGNUP: "api/auth/signup",
+    LOGIN: "api/auth/login",
+    LOGINTOKEN: "api/auth/login-with-token",
+    LOGOUT: "api/auth/logout",
+  },
+  BACKUP: {
+    CREATE: "api/backups",
+    FETCH: "api/backups",
+    DELETE: "/api/backups/:id/delete",
+    DOWNLOAD: "/api/backups/:id/download",
+  },
+  SCHEDULES: {
+    FETCH: "api/schedule-auto-backup",
+    CREATE: "api/schedule-auto-backup",
+  },
 };
