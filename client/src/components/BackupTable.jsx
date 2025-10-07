@@ -17,8 +17,11 @@ const BackupTable = ({isChanged , setIsChanged}) => {
         userDispatch({
           type: "LOADING_TRUE",
         });
+        // CACHE BURSTING  TO RELOAD CACHED DATA
+        const cacheBursting = new Date().getTime()
+
         const getAllBackups = await api.get(
-          `${process.env.REACT_APP_SERVER_URL}/${ENDPOINTS.BACKUP.FETCH}`
+          `${process.env.REACT_APP_SERVER_URL}/${ENDPOINTS.BACKUP.FETCH}/?_cb=${cacheBursting}`
         );
         const backupWithStatus = getAllBackups.data.data.rows.map(
           (backup) => ({
@@ -55,6 +58,11 @@ const BackupTable = ({isChanged , setIsChanged}) => {
 		}
 		let hours =
       parseInt(str.split("T")[1].split(".")[0].split(":")[0]) + 5 + carry;
+    if(hours > 23){
+      hours = hours - 24
+    }
+    hours = String(hours).padStart(2,"0")
+    minutes = String(minutes).padStart(2,"0")
 		time = `${hours}:${minutes}:${seconds}`
     ans = time + " " + date;
     return ans;
@@ -175,7 +183,7 @@ const BackupTable = ({isChanged , setIsChanged}) => {
               </tr>
             </thead>
             <tbody className="fs-5">
-              {backupArr.length > 0 &&
+              {backupArr.length > 0 ?
                 backupArr.map((backup) => {
                   return (
                     <>
@@ -243,7 +251,11 @@ const BackupTable = ({isChanged , setIsChanged}) => {
                       </tr>
                     </>
                   );
-                })}
+                }):<><td></td>
+                <td></td>
+                <td className="text-black">No Backups Found</td>
+                <td></td>
+                <td></td></>}
             </tbody>
           </table>
         </Col>
