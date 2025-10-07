@@ -48,7 +48,7 @@ const NavBar = () => {
 		}
 	};
 	return (
-		<Container fluid className="key-element p-2  ">
+		<Container style={{width:`100%`,position:"fixed",zIndex:"10000"}} fluid className="key-element  top-0 p-2">
 			<Row className="d-flex justify-content-between align-items-center">
 				<Col onClick={(e) => navigate("/")} className="logo-text text-warning">
 					<span>
