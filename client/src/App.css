@@ -204,6 +204,7 @@ input {
 }
 
 .dashboard-bg {
+  background-color: white;
   height: 100%;
   scrollbar-color: #008080;
   scrollbar-width: auto;

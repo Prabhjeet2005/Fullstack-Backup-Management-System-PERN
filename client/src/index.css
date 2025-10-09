@@ -34,7 +34,7 @@ body {
 body {
 	scrollbar-color: #00aaaa #008080;
 	scrollbar-width: thin;
-	background-color: #a1e0e0a0;
+	background-color: white;
 
 }
 body::-webkit-scrollbar {
