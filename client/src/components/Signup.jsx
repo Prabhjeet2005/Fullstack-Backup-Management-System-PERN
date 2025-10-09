@@ -15,7 +15,7 @@ const Signup = () => {
 	const { isLoading, isLoggedIn, userDispatch } = useContext(UserContext);
 	const location = useLocation();
 	// Location: {pathname: '/signup', search: '', hash: '', state: {…}, key: '06r14hc2'}
-	const redirectPage = location?.state?.from?.pathname || "/";
+	const redirectPage = location?.state?.from?.pathname || "/home";
 	const navigate = useNavigate();
 	const handleNameChange = (e) => {
 		authDispatch({
@@ -74,7 +74,7 @@ const Signup = () => {
 
 	useEffect(() => {
 		if(isLoggedIn){
-			navigate("/");
+			navigate("/home");
 		}
 	}, [isLoggedIn])
 	
@@ -82,7 +82,11 @@ const Signup = () => {
     <>
       <Container fluid>
         <Row>
-          <Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
+          <Col
+            xs={{ span: 10, offset: 1 }}
+            md={{ span: 6, offset: 3 }}
+            lg={{ span: 4, offset: 4 }}
+          >
             <Row
               style={{ marginTop: `30vh` }}
               className="d-flex flex-column auth-container"
@@ -105,7 +109,7 @@ const Signup = () => {
                     <span className="relative">
                       {" "}
                       <input
-												className="w-100"
+                        className="w-100"
                         required
                         onChange={handleNameChange}
                         type="text"
@@ -148,7 +152,7 @@ const Signup = () => {
                     <span className="relative">
                       {" "}
                       <input
-												className="w-100"
+                        className="w-100"
                         required
                         onChange={handleEmailChange}
                         type="text"
@@ -188,7 +192,7 @@ const Signup = () => {
                     <span className="relative">
                       {" "}
                       <input
-												className="w-100"
+                        className="w-100"
                         required
                         onChange={handlePasswordChange}
                         type={passwordVisible ? `text` : `password`}

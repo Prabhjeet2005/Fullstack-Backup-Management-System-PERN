@@ -14,7 +14,7 @@ const Login = () => {
 	const { isLoading, isLoggedIn, userDispatch } = useContext(UserContext);
 	const location = useLocation();
 	// Location: {pathname: '/signup', search: '', hash: '', state: {…}, key: '06r14hc2'}
-	const redirectPage = location?.state?.from?.pathname || "/";
+	const redirectPage = location?.state?.from?.pathname || "/home";
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -76,7 +76,7 @@ const Login = () => {
     <>
       <Container fluid>
         <Row>
-          <Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
+          <Col xs={{ span: 10, offset: 1 }} md={{ span: 6, offset: 3 }} lg={{span:4,offset:4}}>
             <Row
               style={{ marginTop: `30vh` }}
               className="d-flex flex-column auth-container"
