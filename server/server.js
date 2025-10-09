@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: `${process.env.CLIENT_URL}`,
+    origin: process.env.NODE_ENV==="production"?"http://localhost:3000":`${process.env.CLIENT_URL}`,
     credentials: true,
     methods: ["GET", "POST", "PATCH", "DELETE"],
   })
@@ -37,8 +37,10 @@ app.use("/api/schedule-auto-backup", autoBackupRouter);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 7000;
-app.listen(PORT, () => {
-  console.log(`Server Running on ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server Running on ${PORT}`);
+// });
 }
 startServer()
+
+module.exports = app;
