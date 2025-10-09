@@ -13,8 +13,8 @@ const backupRouter = require("./routes/backup.route");
 const autoBackupRouter = require("./routes/autoBackup.route");
 const { startScheduler } = require("./utils/schedulesHelper.util");
 
+const app = express();
 const startServer = async()=>{
-  const app = express();
 
   await startScheduler();
 
