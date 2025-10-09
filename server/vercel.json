@@ -11,5 +11,11 @@
       "source": "/api/(.*)",
       "destination": "/server.js"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/trigger-backup",
+      "schedule": "* * * * *" 
+    }
   ]
 }
