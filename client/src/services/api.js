@@ -15,8 +15,8 @@ export const ENDPOINTS = {
   BACKUP: {
     CREATE: "api/backups",
     FETCH: "api/backups",
-    DELETE: "/api/backups/:id/delete",
-    DOWNLOAD: "/api/backups/:id/download",
+    DELETE: "api/backups/:id/delete",
+    DOWNLOAD: "api/backups/:id/download",
   },
   SCHEDULES: {
     FETCH: "api/schedule-auto-backup",
