@@ -11,7 +11,7 @@ const NavBar = () => {
 	const { isLoggedIn, isLoading, userDispatch } = useContext(UserContext);
 	const navigate = useNavigate();
 	const location = useLocation();
-	const redirectPage = location?.state?.from?.pathname || "/";
+	const redirectPage = location?.state?.from?.pathname || "/home";
 
 	const handleLoginClick = (e) => {
 		navigate("/login",{state:{from:location}})
@@ -50,7 +50,7 @@ const NavBar = () => {
 	return (
 		<Container style={{width:`100%`,position:"fixed",zIndex:"10000"}} fluid className="key-element  top-0 p-2">
 			<Row className="d-flex justify-content-between align-items-center">
-				<Col onClick={(e) => navigate("/")} className="logo-text text-warning">
+				<Col onClick={(e) => navigate("/home")} className="logo-text text-warning">
 					<span>
 						InstaBackUp
 						<img src="./images/logo.svg" className="img-size-no-scale" alt="logo" />{" "}
