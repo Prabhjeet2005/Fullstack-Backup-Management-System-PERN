@@ -19,7 +19,10 @@ const app = express();
   app.use(cookieParser());
   app.use(
     cors({
-      origin:process.env.CLIENT_URL,      
+      origin:
+        process.env.NODE_ENV === "production"
+          ? process.env.CLIENT_URL
+          : "http://localhost:3000",
       credentials: true,
       methods: ["GET", "POST", "PATCH", "DELETE"],
     })
@@ -41,9 +44,11 @@ const app = express();
 
   app.use(errorHandler);
 
-  const PORT = process.env.PORT || 7000;
-  // app.listen(PORT, () => {
-  //   console.log(`Server Running on ${PORT}`);
-  // });
+  if(NODE_ENV !== "production"){
+    const PORT = process.env.PORT || 7000;
+    app.listen(PORT, () => {
+      console.log(`Server Running on ${PORT}`);
+    });
+  }
 
 module.exports = app;

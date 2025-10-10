@@ -36,10 +36,18 @@ const signupController = async (req, res, next) => {
 		if (!token) {
 			errorCreator("Error Creating Token", 400);
 		}
-		res.cookie("authToken", token, {
-			maxAge: 24 * 60 * 60 * 1000,
-			httpOnly: true,
-		});
+
+		const cookieOptions = {
+      maxAge: 24 * 60 * 60 * 1000,
+      httpOnly: true,
+    };
+
+		if (process.env.NODE_ENV === "production") {
+      cookieOptions.secure = true;
+      cookieOptions.sameSite = "none";
+    }
+
+		res.cookie("authToken", token, cookieOptions);
 
 		res
 			.status(201)
@@ -74,10 +82,17 @@ const loginController = async (req, res, next) => {
 		if (!token) {
 			errorCreator("Error Creating Token", 400);
 		}
-		res.cookie("authToken", token, {
-			maxAge: 24 * 60 * 60 * 1000,
-			httpOnly: true,
-		});
+		const cookieOptions = {
+      maxAge: 24 * 60 * 60 * 1000,
+      httpOnly: true,
+    };
+
+    if (process.env.NODE_ENV === "production") {
+      cookieOptions.secure = true;
+      cookieOptions.sameSite = "none";
+    }
+
+    res.cookie("authToken", token, cookieOptions);
 		res.status(200).send(responseCreator("Logged In Successfully", user));
 	} catch (error) {
 		next(error);
