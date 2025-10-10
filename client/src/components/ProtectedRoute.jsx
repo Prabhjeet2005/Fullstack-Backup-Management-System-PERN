@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children }) => {
 			return <Loader isLoading={isLoading} />;
 		}
 		if (!isLoggedIn) {
-			navigate("/login",{state:{from:location}})
+			navigate("/",{state:{from:location}})
 		}
 		
 	}, [isLoggedIn])
