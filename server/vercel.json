@@ -15,7 +15,7 @@
   "crons": [
     {
       "path": "/api/cron/trigger-backup",
-      "schedule": "0 30 18 * * *" 
+      "schedule": "30 18 * * *" 
     }
   ]
 }
