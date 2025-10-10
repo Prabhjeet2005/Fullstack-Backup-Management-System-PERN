@@ -29,15 +29,15 @@ const app = express();
   app.use("/api/auth", authRouter);
   app.use("/api/backups", backupRouter);
   app.use("/api/schedule-auto-backup", autoBackupRouter);
-  // app.use("/api/cron/trigger-backup", async (req, res) => {
-  //   try {
-  //     await startScheduler(); // Whatever your scheduled task does
-  //     res.status(200).send("Scheduled backup task executed successfully.");
-  //   } catch (error) {
-  //     console.error("Scheduled task failed:", error);
-  //     res.status(500).send("Scheduled task failed.");
-  //   }
-  // });
+  app.use("/api/cron/trigger-backup", async (req, res) => {
+    try {
+      await startScheduler(); // Whatever your scheduled task does
+      res.status(200).send("Scheduled backup task executed successfully.");
+    } catch (error) {
+      console.error("Scheduled task failed:", error);
+      res.status(500).send("Scheduled task failed.");
+    }
+  });
 
   app.use(errorHandler);
 
