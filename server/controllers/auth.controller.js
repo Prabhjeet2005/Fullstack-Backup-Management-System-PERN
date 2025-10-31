@@ -129,7 +129,13 @@ const logoutController = async (req, res, next) => {
     if(!authToken){
       errorCreator("User Already Logged Out!",400);
     }
-		res.clearCookie("authToken");
+		const options = {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      path: "/",
+    };
+		res.clearCookie("authToken",options);
 		res.send(responseCreator("Logged Out Successfully!"));
 	} catch (error) {
 		next(error);
