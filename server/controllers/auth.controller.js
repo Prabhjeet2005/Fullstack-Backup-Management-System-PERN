@@ -44,6 +44,7 @@ const signupController = async (req, res, next) => {
     const cookieOptions = {
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
+      path: "/", // <-- FIX: Added root path
     };
 
     if (process.env.NODE_ENV === "production") {
@@ -91,6 +92,7 @@ const loginController = async (req, res, next) => {
     const cookieOptions = {
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
+      path: "/", // <-- FIX: Added root path
     };
 
     if (process.env.NODE_ENV === "production") {
@@ -137,13 +139,22 @@ const logoutController = async (req, res, next) => {
     if (!authToken) {
       errorCreator("User Already Logged Out!", 400);
     }
+
+    // -----------------------------------------------------------------
+    // THE FIX:
+    // You MUST provide all the same options you used to set the cookie.
+    // The most important one you were missing was 'path'.
+    // -----------------------------------------------------------------
     const options = {
       httpOnly: true,
+      path: "/", // <-- FIX: Added root path
     };
+
     if (process.env.NODE_ENV === "production") {
       options.secure = true;
       options.sameSite = "none";
     }
+
     res.clearCookie("authToken", options);
     res.send(responseCreator("Logged Out Successfully!"));
   } catch (error) {
