@@ -63,49 +63,6 @@ const LandingPg = () => {
       ],
     },
   ];
-  const navigate = useNavigate()
-  const {userDispatch,isLoggedIn} = useContext(UserContext)
-  const {authDispatch} = useContext(AuthContext)
-  useEffect(() => {
-    (async () => {
-      if (!isLoggedIn) {
-        try {
-          userDispatch({
-            type: "LOADING_TRUE",
-          });
-          const checkCookieStored = await api.post(
-            `${process.env.REACT_APP_SERVER_URL}/${ENDPOINTS.USER.LOGINTOKEN}`
-          );
-          if (checkCookieStored?.data?.success === true) {
-            authDispatch({
-              type: "NAME_VALIDATION",
-              payload: checkCookieStored.data.data.username,
-            });
-            authDispatch({
-              type: "EMAIL_CHANGE",
-              payload: checkCookieStored.data.data.email,
-            });
-            authDispatch({
-              type: "ROLE",
-              payload: checkCookieStored.data.data.role_name,
-            });
-            userDispatch({
-              type: "LOGGEDIN",
-            });
-          }
-        } catch (error) {
-          console.error(error);
-        } finally {
-          userDispatch({
-            type: "LOADING_FALSE",
-          });
-        }
-      }
-    })();
-    if(isLoggedIn){
-      navigate("/home")
-    }
-  }, [isLoggedIn]);
   
   
   return (
