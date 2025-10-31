@@ -1,7 +1,9 @@
 import axios from "axios"
 
+const serverURL = process.env.REACT_APP_ENV === "development" ?"http://localhost:7000" :process.env.REACT_APP_SERVER_URL
+
 export const api = axios.create({
-	baseURL: process.env.REACT_APP_SERVER_URL,
+	baseURL: serverURL,
   withCredentials:true
 });
 

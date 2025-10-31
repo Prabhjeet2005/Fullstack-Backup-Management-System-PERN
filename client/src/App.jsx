@@ -1,5 +1,10 @@
 import "./App.css";
-import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import NavBar from "./components/NavBar";
 import { ToastContainer, Bounce } from "react-toastify";
 import { useContext, useEffect } from "react";
@@ -7,55 +12,66 @@ import { UserContext } from "./context/UserContext";
 import { api, ENDPOINTS } from "./services/api";
 import { AuthContext } from "./context/AuthContext";
 import Loader from "./components/Loader";
+import axios from "axios";
 
 function App() {
-	const { isLoggedIn, isLoading, userDispatch } = useContext(UserContext);
-	const { name, email, role_name, authDispatch } = useContext(AuthContext);
+  const { isLoggedIn, isLoading, userDispatch } = useContext(UserContext);
+  const { name, email, role_name, authDispatch } = useContext(AuthContext);
 
-	const location = useLocation();
-	const navigate = useNavigate();
-	const redirectPg = location?.state?.from?.pathname || "/home";
+  const location = useLocation();
+  const navigate = useNavigate();
+  const redirectPg = location?.state?.from?.pathname || "/home";
 
-	useEffect(() => {
-		(async () => {
-			if (!isLoggedIn) {
-				try {
-					userDispatch({
-						type: "LOADING_TRUE",
-					});
-					const checkCookieStored = await api.post(
-						`${process.env.REACT_APP_SERVER_URL}/${ENDPOINTS.USER.LOGINTOKEN}`
-					);
-					if (checkCookieStored?.data?.success === true) {
-						authDispatch({
-							type: "NAME_VALIDATION",
-							payload: checkCookieStored.data.data.username,
-						});
-						authDispatch({
-							type: "EMAIL_CHANGE",
-							payload: checkCookieStored.data.data.email,
-						});
-						authDispatch({
-							type: "ROLE",
-							payload: checkCookieStored.data.data.role_name,
-						});
-						userDispatch({
-							type: "LOGGEDIN",
-						});
-					} 
+  useEffect(() => {
+    (async () => {
+      if (!isLoggedIn) {
+        try {
+          userDispatch({
+            type: "LOADING_TRUE",
+          });
+          const checkCookieStored = await api.post(
+            `${process.env.REACT_APP_SERVER_URL}/${ENDPOINTS.USER.LOGINTOKEN}`
+          );
+          if (checkCookieStored?.data?.success === true) {
+            authDispatch({
+              type: "NAME_VALIDATION",
+              payload: checkCookieStored.data.data.username,
+            });
+            authDispatch({
+              type: "EMAIL_CHANGE",
+              payload: checkCookieStored.data.data.email,
+            });
+            authDispatch({
+              type: "ROLE",
+              payload: checkCookieStored.data.data.role_name,
+            });
+            userDispatch({
+              type: "LOGGEDIN",
+            });
+          }
+        } catch (error) {
+          console.error(error);
+        } finally {
+          userDispatch({
+            type: "LOADING_FALSE",
+          });
+        }
+      }
+    })();
+  }, []);
 
-				} catch (error) {
-					console.error(error);
-				} finally {
-					userDispatch({
-						type: "LOADING_FALSE",
-					});
-				}
-			}
-		})();
-	}, []);
+  useEffect(() => {
+    try {
+      (async () =>
+        await axios.get(
+          `${process.env.REACT_APP_SERVER_URL}/api/cron/trigger-backup`
+        ))();
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
-	return (
+  return (
     <>
       <NavBar />
       <section className="mt-5"></section>

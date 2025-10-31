@@ -152,6 +152,7 @@ const Login = () => {
               <Button
                 disabled={isLoading}
                 onClick={handleSubmit}
+                onKeyDown={handleSubmit}
                 className={`auth-btn ${isLoading && "btn-loading"}`}
               >
                 {isLoading ? (

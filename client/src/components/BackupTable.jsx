@@ -69,22 +69,24 @@ const BackupTable = ({isChanged , setIsChanged}) => {
   };
 
   const getBackupSize = (str) => {
-    let number = parseFloat(str);
-    const sizes = ["KB", "MB", "GB", "TB"];
-    let ans = 0;
-    let multiplier = 1;
-    const fixed = 1024;
-    for (let i = 0; i < sizes.length; i++) {
-      if (parseFloat(number / (fixed * multiplier)).toFixed(2) < 1) {
-        continue;
-      } else {
-        return (
-          parseFloat(number / (fixed * multiplier)).toFixed(2) +
-          " " +
-          sizes[i]
-        );
-      }
+    const bytes = parseFloat(str);
+    if (isNaN(bytes) || bytes === 0) {
+      return "0 Bytes";
     }
+
+    const fixed = 1024;
+    const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
+
+    const i = Math.floor(Math.log(bytes) / Math.log(fixed));
+
+    // Handle cases where the size might be enormous
+    if (i >= sizes.length) {
+      const val = bytes / Math.pow(fixed, sizes.length - 1);
+      return `${parseFloat(val.toFixed(2))} ${sizes[sizes.length - 1]}`;
+    }
+
+    const val = bytes / Math.pow(fixed, i);
+    return `${parseFloat(val.toFixed(2))} ${sizes[i]}`;
   };
 
   const handleDownloadClick = async (backupId) => {
@@ -190,6 +192,7 @@ const BackupTable = ({isChanged , setIsChanged}) => {
                       <tr className="text-center">
                         <td>{getTimeAndDate(backup.created_at)}</td>
                         <td>{getBackupSize(backup.file_size_bytes)}</td>
+                        {console.log("🚀 ~ getBackupSize ~ backup.file_size_bytes:", backup.file_size_bytes)}
                         <td>{backup.created_by}</td>
                         <td className="alert-success">
                           {backup.status === "success" && (
