@@ -59,7 +59,7 @@ const Login = () => {
 					type: "LOGGEDIN",
 				});
 				toast.success("User Logged In Successfully!");
-				navigate(redirectPage, { replace: true });
+				navigate("/home", { replace: true });
 			}
 		} catch (error) {
 			userDispatch({
