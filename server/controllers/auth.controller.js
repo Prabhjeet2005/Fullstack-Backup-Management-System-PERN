@@ -9,6 +9,12 @@ const {
   responseCreator,
 } = require("../utils/responseCreator");
 
+// -----------------------------------------------------------------
+// THE FIX: Define the production domain.
+// We must provide this domain for the browser to clear the cookie.
+// -----------------------------------------------------------------
+const PROD_DOMAIN = "fullstack-backup-management-system.vercel.app";
+
 const signupController = async (req, res, next) => {
   try {
     const userData = req.body;
@@ -44,12 +50,13 @@ const signupController = async (req, res, next) => {
     const cookieOptions = {
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
-      path: "/", // <-- FIX: Added root path
+      path: "/",
     };
 
     if (process.env.NODE_ENV === "production") {
       cookieOptions.secure = true;
       cookieOptions.sameSite = "none";
+      cookieOptions.domain = PROD_DOMAIN; // <-- FIX: Added domain
     }
 
     res.cookie("authToken", token, cookieOptions);
@@ -92,12 +99,13 @@ const loginController = async (req, res, next) => {
     const cookieOptions = {
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
-      path: "/", // <-- FIX: Added root path
+      path: "/",
     };
 
     if (process.env.NODE_ENV === "production") {
       cookieOptions.secure = true;
       cookieOptions.sameSite = "none";
+      cookieOptions.domain = PROD_DOMAIN; // <-- FIX: Added domain
     }
 
     res.cookie("authToken", token, cookieOptions);
@@ -142,17 +150,17 @@ const logoutController = async (req, res, next) => {
 
     // -----------------------------------------------------------------
     // THE FIX:
-    // You MUST provide all the same options you used to set the cookie.
-    // The most important one you were missing was 'path'.
+    // Adding the 'domain' attribute to match the cookie settings.
     // -----------------------------------------------------------------
     const options = {
       httpOnly: true,
-      path: "/", // <-- FIX: Added root path
+      path: "/",
     };
 
     if (process.env.NODE_ENV === "production") {
       options.secure = true;
       options.sameSite = "none";
+      options.domain = PROD_DOMAIN; // <-- FIX: Added domain
     }
 
     res.clearCookie("authToken", options);
